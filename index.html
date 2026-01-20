@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoe Irevani - Psychodynamic Psychotherapist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #FAF7F2;
+            --warm-white: #FFFFFF;
+            --sage: #9CAF88;
+            --deep-sage: #6B8E5B;
+            --terracotta: #C97B63;
+            --soft-terracotta: #E5A491;
+            --charcoal: #2C3333;
+            --warm-gray: #5C5D5C;
+            --light-sage: #E8F0E1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--charcoal);
+            background: var(--cream);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Hero Section with Beautiful Background */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 4rem 2rem;
+            background: 
+                linear-gradient(135deg, rgba(232, 240, 225, 0.92) 0%, rgba(250, 247, 242, 0.95) 50%, rgba(255, 255, 255, 0.92) 100%),
+                url('https://picsum.photos/seed/therapy1/1920/1080') center/cover;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(156, 175, 136, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(201, 123, 99, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 30px) scale(1.05); }
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-label {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--deep-sage);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            color: var(--charcoal);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: var(--warm-gray);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.7s forwards;
+        }
+        
+        .hero-description {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            color: var(--warm-gray);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.9s forwards;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--sage);
+            color: var(--warm-white);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(156, 175, 136, 0.3);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.1s forwards;
+        }
+        
+        .cta-button:hover {
+            background: var(--deep-sage);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(156, 175, 136, 0.4);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards, bounce 2s ease-in-out 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        .scroll-indicator svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--sage);
+            stroke-width: 2;
+        }
+        
+        section {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-label {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 3rem;
+            color: var(--charcoal);
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--warm-white);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            margin-bottom: 2rem;
+        }
+        
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--warm-gray);
+            margin-bottom: 1.5rem;
+        }
+        
+        .about-highlight {
+            background: var(--light-sage);
+            padding: 2.5rem;
+            border-radius: 20px;
+            margin-top: 2rem;
+            border-left: 4px solid var(--sage);
+        }
+        
+        .about-highlight h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: var(--deep-sage);
+            margin-bottom: 1rem;
+        }
+        
+        .about-highlight p {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: var(--warm-gray);
+            margin: 0;
+        }
+        
+        .about-visual {
+            position: relative;
+            height: 600px;
+            background: 
+                linear-gradient(135deg, rgba(156, 175, 136, 0.25), rgba(156, 175, 136, 0.45)),
+                url('https://picsum.photos/seed/nature/800/1000') center/cover;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: float 15s ease-in-out infinite;
+        }
+        
+        .about-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 10%;
+            left: -5%;
+            width: 250px;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            animation: float 20s ease-in-out infinite reverse;
+        }
+        
+        /* Experience Section */
+        .experience {
+            background: var(--cream);
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .experience-card {
+            background: var(--warm-white);
+            padding: 3rem;
+            border-radius: 25px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(156, 175, 136, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 2;
+        }
+        
+        .experience-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        
+        .experience-card:nth-child(1)::after {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+                              url('https://picsum.photos/seed/elderly/600/400');
+        }
+        
+        .experience-card:nth-child(2)::after {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+                              url('https://picsum.photos/seed/health/600/400');
+        }
+        
+        .experience-card:nth-child(3)::after {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.92)),
+                              url('https://picsum.photos/seed/community/600/400');
+        }
+        
+        .experience-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .experience-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .experience-card:hover::after {
+            opacity: 1;
+        }
+        
+        .experience-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 1.5rem;
+        }
+        
+        .experience-card p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--warm-gray);
+        }
+        
+        .experience-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--light-sage), var(--sage));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Approach Section */
+        .approach {
+            background: var(--warm-white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .approach::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(255, 255, 255, 0.95), rgba(232, 240, 225, 0.3)),
+                url('https://picsum.photos/seed/peaceful/800/1200') center/cover;
+            opacity: 0.4;
+            pointer-events: none;
+        }
+        
+        .approach-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .approach-list {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .approach-item {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: rgba(248, 245, 240, 0.7);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .approach-item:hover {
+            background: var(--light-sage);
+            border-left-color: var(--sage);
+            transform: translateX(10px);
+        }
+        
+        .approach-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--sage);
+            line-height: 1;
+            flex-shrink: 0;
+        }
+        
+        .approach-text h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin-bottom: 0.5rem;
+        }
+        
+        .approach-text p {
+            font-size: 1.05rem;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+        
+        /* Visual Break */
+        .visual-break {
+            height: 500px;
+            background: 
+                linear-gradient(rgba(156, 175, 136, 0.35), rgba(107, 142, 91, 0.4)),
+                url('https://picsum.photos/seed/calm/1920/1080') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-break::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(232, 240, 225, 0.3), transparent);
+        }
+        
+        .visual-break-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: var(--warm-white);
+            max-width: 700px;
+            padding: 2rem;
+        }
+        
+        .visual-break-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .visual-break-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Specialties Section */
+        .specialties {
+            background: var(--cream);
+        }
+        
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .specialty-tag {
+            padding: 1.5rem 2rem;
+            background: var(--warm-white);
+            border-radius: 15px;
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--charcoal);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .specialty-tag:hover {
+            background: var(--sage);
+            color: var(--warm-white);
+            transform: scale(1.05);
+            border-color: var(--deep-sage);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: 
+                linear-gradient(135deg, rgba(107, 142, 91, 0.93), rgba(156, 175, 136, 0.93)),
+                url('https://picsum.photos/seed/garden/1920/1080') center/cover;
+            color: var(--warm-white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1), transparent);
+            pointer-events: none;
+        }
+        
+        .contact .section-label {
+            color: var(--soft-terracotta);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact .section-title {
+            color: var(--warm-white);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-info {
+            max-width: 600px;
+            margin: 3rem auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.02);
+        }
+        
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--warm-white);
+            stroke-width: 2;
+        }
+        
+        .contact-item a {
+            color: var(--warm-white);
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+        
+        .contact-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-top: 2rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        footer p {
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .about-visual {
+                height: 400px;
+            }
+            
+            section {
+                padding: 5rem 1.5rem;
+            }
+            
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .approach-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .visual-break {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .hero {
+                min-height: 90vh;
+                padding: 3rem 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .specialties-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .visual-break {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Psychodynamic Psychotherapist</div>
+            <h1>Zoe Irevani</h1>
+            <p class="hero-subtitle">MSc in Counselling and Psychotherapy</p>
+            <p class="hero-description">
+                A safe and supportive space to explore life's challenges and make sense of what feels difficult. 
+                Grounded in compassion, understanding, and deep healing.
+            </p>
+            <a href="#contact" class="cta-button">Begin Your Journey</a>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M12 19l-4-4M12 19l4-4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="section-label">About</div>
+                    <h2 class="section-title">A Space for Understanding & Healing</h2>
+                    <p>
+                        As a highly experienced psychotherapist, I offer a safe and supportive environment where you can explore life's challenges and make sense of what feels difficult.
+                    </p>
+                    <p>
+                        My work is grounded in psychodynamic principles, which means we look together at how your past experiences, unconscious processes, and relationship patterns may be shaping your present life. This exploration can lead to greater self-understanding, healing, and lasting change.
+                    </p>
+                    <div class="about-highlight">
+                        <h3>A Welcoming Space for All</h3>
+                        <p>
+                            I offer therapy in both English and Farsi, and I welcome clients from all cultural, religious, and spiritual backgrounds including Jewish, Christian, Muslim, and secular communities.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-visual"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <div class="section-label">Experience</div>
+            <h2 class="section-title">Specialized Care Across Diverse Contexts</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-icon">🤝</div>
+                    <h3>Older Adults</h3>
+                    <p>
+                        Experience working with older adults through Age UK, supporting individuals through life transitions, loss, and the unique challenges of aging.
+                    </p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">🌸</div>
+                    <h3>Women's Health</h3>
+                    <p>
+                        Specialized work with women facing complex health and fertility challenges at the Women's Health Clinic at the Royal Free Hospital.
+                    </p>
+                </div>
+                <div class="experience-card">
+                    <div class="experience-icon">🌍</div>
+                    <h3>Refugees & Immigrants</h3>
+                    <p>
+                        Supporting refugees and immigrants through the Dawn Charitable Trust, understanding the unique experiences of displacement and cultural transition.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section class="approach">
+        <div class="container">
+            <div class="approach-content">
+                <div class="section-label">My Approach</div>
+                <h2 class="section-title">Psychodynamic Principles in Practice</h2>
+                <div class="approach-list">
+                    <div class="approach-item">
+                        <div class="approach-number">01</div>
+                        <div class="approach-text">
+                            <h4>Exploring the Unconscious</h4>
+                            <p>We examine how unconscious patterns and past experiences shape your current thoughts, feelings, and behaviors.</p>
+                        </div>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-number">02</div>
+                        <div class="approach-text">
+                            <h4>Relationship Patterns</h4>
+                            <p>Understanding how your early relationships influence the way you connect with others today.</p>
+                        </div>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-number">03</div>
+                        <div class="approach-text">
+                            <h4>Self-Understanding</h4>
+                            <p>Creating space for deep self-reflection that leads to lasting change and personal growth.</p>
+                        </div>
+                    </div>
+                    <div class="approach-item">
+                        <div class="approach-number">04</div>
+                        <div class="approach-text">
+                            <h4>Safe Therapeutic Space</h4>
+                            <p>Providing a confidential, non-judgmental environment where you feel truly heard and supported.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Break -->
+    <div class="visual-break">
+        <div class="visual-break-content">
+            <h3>A Journey of Self-Discovery</h3>
+            <p>
+                Together, we create a space where you can explore your inner world with compassion and understanding, 
+                leading to profound insights and meaningful change.
+            </p>
+        </div>
+    </div>
+
+    <!-- Specialties Section -->
+    <section class="specialties">
+        <div class="container">
+            <div class="section-label">Areas of Focus</div>
+            <h2 class="section-title">Supporting You Through Life's Challenges</h2>
+            <div class="specialties-grid">
+                <div class="specialty-tag">Anxiety & Depression</div>
+                <div class="specialty-tag">Relationship Difficulties</div>
+                <div class="specialty-tag">Life Transitions</div>
+                <div class="specialty-tag">Trauma & Loss</div>
+                <div class="specialty-tag">Identity & Self-Esteem</div>
+                <div class="specialty-tag">Cultural Adjustment</div>
+                <div class="specialty-tag">Women's Health Issues</div>
+                <div class="specialty-tag">Fertility Challenges</div>
+                <div class="specialty-tag">Aging & Life Review</div>
+                <div class="specialty-tag">Grief & Bereavement</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-label">Get in Touch</div>
+            <h2 class="section-title">Begin Your Journey to Healing</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <a href="mailto:Zoe.irvani@gmail.com">Zoe.irvani@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Golders Green, London</span>
+                </div>
+            </div>
+            <p class="contact-text">
+                Taking the first step towards therapy can feel daunting. I offer a warm, confidential space where you can explore your thoughts and feelings at your own pace. Whether you're facing a specific challenge or seeking deeper self-understanding, I'm here to support you on your journey.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Zoe Irevani - Psychodynamic Psychotherapist. All rights reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">MSc in Counselling and Psychotherapy | Golders Green, London</p>
+        </div>
+    </footer>
+</body>
+</html>
